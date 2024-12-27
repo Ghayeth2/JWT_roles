@@ -88,6 +88,15 @@ class ProductControllerTest {
 
     @Test
     @SneakyThrows
+    @WithMockUser(authorities = {"ROLE_USER"})
+    void productController_DeleteProduct_UnauthorizedUser() {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/products/delete")
+                .param("id", "1"))
+                .andExpect(MockMvcResultMatchers.status().isForbidden());
+    }
+
+    @Test
+    @SneakyThrows
     @WithMockUser(authorities = {"ROLE_ADMIN"})
     void productController_DeleteProduct() {
         BDDMockito.given(productServices.delete(ArgumentMatchers.anyLong()))
