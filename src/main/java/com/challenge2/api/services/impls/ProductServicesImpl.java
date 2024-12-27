@@ -46,7 +46,6 @@ public class ProductServicesImpl implements ProductServices {
     public List<ProductResponse> products() {
         return productRepo.findAll().stream()
                 .map(
-
                         product -> {
                             System.out.println(product.getId()
                             + " " + product.getName());

@@ -36,10 +36,10 @@ public class UserServicesImpl implements UserServices {
 
         user.setRoles(List.of(roleServices.getOrCreateRole("ROLE_ADMIN")));
         userRepository.save(user);
-        userRepository.findByEmail(registerRequest.getEmail())
-                        .get().getRoles().forEach(role -> {
-                            System.out.println(role.getName());
-                });
+//        userRepository.findByEmail(registerRequest.getEmail())
+//                        .get().getRoles().forEach(role -> {
+//                            System.out.println(role.getName());
+//                });
         log.info("Saved user: "+user.getFullName()+ " "
         + user.getEmail()+ " "+ user.getPassword());
         return "User registered successfully";

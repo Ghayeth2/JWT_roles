@@ -32,7 +32,8 @@ public class AuthServicesImpl implements AuthServices {
                 )
         );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        SecurityContextHolder.getContext()
+                .setAuthentication(authentication);
 
         var principal = (UserPrincipal) authentication.getPrincipal();
         System.out.println("Principal's email: " + principal.getEmail());
